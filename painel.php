@@ -25,9 +25,9 @@
 
 		$listar = $query->fetch(PDO::FETCH_ASSOC);
 
-		echo "Olá, ".$listar['nome'].", bem-vindo!";
-		echo "Confira seus dados: \n";
-		echo "CPF: ".$listar['cpf']."\n";
+		echo "Olá, ".$listar['nome'].", bem-vindo! <br>";
+		echo "Confira seus dados: <br>";
+		echo "CPF: ".$listar['cpf']."<br>";
 		echo "E-Mail: ".$listar['email'];
 		}
 		catch(Exception  $e){
