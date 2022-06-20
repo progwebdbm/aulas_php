@@ -14,14 +14,12 @@
 		$email = $_POST['email'];
 		$senha = $_POST['senha'];
 
-		$insert = 'insert into usuarios (nome,cpf,email,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'","'.$senha.'")';
+		$insert = 'insert into usuarios (nome,cpf,email,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'", md5("'.$senha.'"))';
 		
 		$cadastrar = $conexao -> prepare($insert);
 		$cadastrar -> execute();
 
-		echo "Cadastro efetuado com sucesso!";
-
-		
+		echo "Cadastro efetuado com sucesso!";	
 	
 	?>
 </body>
