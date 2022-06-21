@@ -4,7 +4,7 @@
 	$email = $_POST['email'];
 	$senha = $_POST['senha'];
 	try{
-		$query = $conexao->query('select id,nome,cpf,email,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
+		$query = $conexao->query('select id,nome,cpf,email,perfil,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
 
 		$listar = $query->fetch(PDO::FETCH_ASSOC);
 		

@@ -15,26 +15,30 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Sistema</title>
 </head>
 <body>
 	<?php
 		require('conexao.php');
 		try{
-		$query = $conexao->query('select id,nome,cpf,email,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
+		$query = $conexao->query('select id,nome,cpf,email,perfil,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
 
 		$listar = $query->fetch(PDO::FETCH_ASSOC);
-
-		echo "Olá, ".$listar['nome'].", bem-vindo! <br>";
-		echo "Confira seus dados: <br>";
-		echo "CPF: ".$listar['cpf']."<br>";
-		echo "E-Mail: ".$listar['email'];
+		if($listar['perfil']=="admin"){
+			require('header_adm.php');
+		}
+		if($listar['perfil']=="user"){
+			require('header_user.php');
+		}	
 		}
 		catch(Exception  $e){
 			echo 'Erro: ',  $e->getMessage(), "\n";
 		}
 	
 	?>
-	
+	<main>
+		<h1>Bem-vindo ao sistema</h1>
+		<img src="imagem/sistema.jpeg">
+	</main>
 </body>
 </html>

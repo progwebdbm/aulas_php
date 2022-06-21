@@ -12,9 +12,10 @@
 		$nome = $_POST['nome'];
 		$cpf = $_POST['cpf'];
 		$email = $_POST['email'];
+		$perfil = $_POST['perfil'];
 		$senha = $_POST['senha'];
 
-		$insert = 'insert into usuarios (nome,cpf,email,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'", md5("'.$senha.'"))';
+		$insert = 'insert into usuarios (nome,cpf,email,perfil,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'","'.$perfil.'",md5("'.$senha.'"))';
 		
 		$cadastrar = $conexao -> prepare($insert);
 		$cadastrar -> execute();
