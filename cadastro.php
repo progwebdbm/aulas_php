@@ -14,6 +14,12 @@
 		<input type="text" name="cpf" id="cpf" placeholder="Somente números" required><br>
 		<label for="email">E-Mail</label><br>
 		<input type="email" name="email" id="email" placeholder="nome@site.com.br" required><br>
+		<label for="perfil">Perfil</label><br>
+		<select name="perfil" id="perfil">
+			<option value="" selected disabled>Selecione um perfil</option>
+			<option value="admin">Administrador</option>
+			<option value="user">Usuário comum</option>
+		</select><br>
 		<label for="senha">Senha</label><br>
 		<input type="password" name="senha" id="senha" required><br>
 		<label for="confirma">Confirmar Senha</label><br>
