@@ -23,8 +23,8 @@
 		$id = $_POST['id'];
 		$nome = $_POST['nome'];
 		$cpf = $_POST['cpf'];
-		$email = $_POST['email'];
-		$senha = $_POST['senha'];
+		$email1 = $_POST['email'];
+		$senha1 = $_POST['senha'];
 		try{
 		$query = $conexao->query('select id,nome,cpf,email,perfil,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
 
@@ -35,12 +35,12 @@
 		if($listar['perfil']=="user"){
 			require('header_user.php');
 		}
-		$update = 'update usuarios set nome="'.$nome.'", cpf="'.$cpf.'", email="'.$email.'",senha=md5("'.$senha.'") where id="'.$id.'"';
+		$update = 'update usuarios set nome="'.$nome.'", cpf="'.$cpf.'", email="'.$email1.'",senha=md5("'.$senha1.'") where id="'.$id.'"';
 
 		$atualizar = $conexao->prepare($update);
 		$atualizar->execute();
 
-		echo "Dados atualizados com sucesso!";
+		echo "Dados atualizados com sucesso! Saia e faça login novamente.";
 
 		}
 		catch(Exception  $e){
