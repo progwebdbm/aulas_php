@@ -23,21 +23,26 @@
 		try{
 		$query = $conexao->query('select id,nome,cpf,email,perfil,senha from usuarios where email = "'.$email.'" and senha = md5("'.$senha.'")');
 
-		$listar = $query->fetch(PDO::FETCH_ASSOC);
+		 $listar = $query->fetch(PDO::FETCH_ASSOC);
 		if($listar['perfil']=="admin"){
 			require('header_adm.php');
 		}
 		if($listar['perfil']=="user"){
 			require('header_user.php');
-		}	
+		}
+		
+		echo '<main>
+		<h1>Bem-vindo ao sistema, '.$listar['nome'].'!</h1>';
+		
+	
 		}
 		catch(Exception  $e){
 			echo 'Erro: ',  $e->getMessage(), "\n";
 		}
 	
 	?>
-	<main>
-		<h1>Bem-vindo ao sistema</h1>
+		
+		
 		<img src="imagem/sistema.jpeg">
 	</main>
 </body>
