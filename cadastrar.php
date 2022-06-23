@@ -1,3 +1,14 @@
+<?php
+	session_start();
+	setcookie("ck_authorized","true",time()+3600,"/");
+	if(!isset($_SESSION['email']) || !isset($_SESSION['senha'])){
+		header('Location: index.php');
+	}
+	else{
+		$email = $_SESSION['email'];
+		$senha = $_SESSION['senha'];
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,14 +25,19 @@
 		$email = $_POST['email'];
 		$perfil = $_POST['perfil'];
 		$senha = $_POST['senha'];
-
-		$insert = 'insert into usuarios (nome,cpf,email,perfil,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'","'.$perfil.'",md5("'.$senha.'"))';
+		try{
+			require('header_adm.php');	
+			$insert = 'insert into usuarios (nome,cpf,email,perfil,senha) values ("'.$nome.'","'.$cpf.'","'.$email.'","'.$perfil.'",md5("'.$senha.'"))';
 		
-		$cadastrar = $conexao -> prepare($insert);
-		$cadastrar -> execute();
-
-		echo "Cadastro efetuado com sucesso!";	
-	
+			$cadastrar = $conexao -> prepare($insert);
+			$cadastrar -> execute();
+		
+		
+			echo "<main><p>Cadastro efetuado com sucesso!</p></main>";	
+		}
+		catch(Exception $e){
+			echo 'Erro: ',  $e->getMessage(), "\n";
+		}
 	?>
 </body>
 </html>
